@@ -1,0 +1,57 @@
+﻿<Page x:Class="Kursovaya.Profile"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kursovaya"
+      mc:Ignorable="d" 
+      d:DesignHeight="515" d:DesignWidth="960"
+      Title="Profile">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"></ColumnDefinition>
+            <ColumnDefinition Width="60*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="20,20,20,20" Grid.Column="0" RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0"/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <!--
+            [Fullname]
+            [Phone]
+            [Email]
+            [Login]
+            [Password]
+            [TypeOfUserID]
+            -->
+            <Image Source="C:\Users\gdugd\source\repos\Kursovaya\Kursovaya\img\Rayan.jpg"  Width="200" Height="200"  />
+            <TextBlock TextWrapping="Wrap" Text="Fullname" Width="200" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+            <TextBox TextWrapping="Wrap" Text="Ni Pl" Width="200" HorizontalAlignment="Center" FontSize="16"/>
+
+            <TextBlock TextWrapping="Wrap" Text="Phone" Width="200" HorizontalAlignment="Center" Margin="0,10,0,0" />
+            <TextBox TextWrapping="Wrap" Text="79141012202" Width="200" HorizontalAlignment="Center" FontSize="16"/>
+
+            <TextBlock TextWrapping="Wrap" Text="Email" Width="200" HorizontalAlignment="Center" Margin="0,10,0,0" />
+            <TextBox TextWrapping="Wrap" Text="gdugdh@gmail.com" Width="200" HorizontalAlignment="Center" FontSize="16"/>
+            <Button Content="Сохранить" Background="#FFC5C5C5" Width="200" FontSize="16" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+        </StackPanel>
+        <ScrollViewer Grid.Column="1">
+            <StackPanel Margin="20,20,20,20">
+                <TextBlock TextWrapping="Wrap" Text="Посещенные представления" HorizontalAlignment="Left" Margin="0,0,0,0" FontSize="16"/>
+
+                <WrapPanel x:Name="Movies">
+
+                </WrapPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

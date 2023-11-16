@@ -1,0 +1,106 @@
+﻿<Page x:Class="Kursovaya.SelectTicket"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kursovaya"
+      mc:Ignorable="d" 
+      d:DesignHeight="1024" d:DesignWidth="1280 "
+      Title="SelectTicket">
+
+    <Page.Resources>
+        <SolidColorBrush x:Key="ButtonBorderBrush" Color="White" />
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <!--
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="Height" Value="20"/>
+            -->
+            <Setter Property="BorderThickness" Value="1.5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            CornerRadius="5"
+                                BorderThickness="1.5"
+                                BorderBrush="{DynamicResource ButtonBorderBrush}"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid Background="White">
+        <Grid Margin="0, 50, 0, 0" Width="1040">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70*"></ColumnDefinition>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="30*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1">
+                <Button x:Name="InZoom" Height="35" Width="35" FontSize="16px" Click="InZoom_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,250,0,10">+</Button>
+                <Button x:Name="OutZoom" Height="35" Width="35" FontSize="16px" Click="OutZoom_Click" VerticalAlignment="Top" HorizontalAlignment="Left">-</Button>
+            </StackPanel>
+            <StackPanel Grid.Column="0">
+                <StackPanel x:Name="PriceCategoryTypesSP" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Height="50" Margin="0, 10"></StackPanel>
+                <Canvas Background="White" x:Name="CanvasHall" VerticalAlignment="Top" Width="700" Height="600" MouseLeave="Canvas_MouseLeave" MouseLeftButtonDown="Canvas_MouseLeftButtonDown" MouseMove="Canvas_MouseMove" ClipToBounds="True" >
+                </Canvas>
+            </StackPanel>
+            <StackPanel Grid.Column="2" Margin="10">
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20px" Text="Длительность" Foreground="#1a6ec1"></TextBlock>
+                <TextBlock x:Name="DurationMovie" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18px" Text="01:30" Margin="0,0,0,20"></TextBlock>
+
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20px" Text="Фильм" Foreground="#1a6ec1"></TextBlock>
+                <TextBlock x:Name="TitleMovie" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18px" Text="Лоокуут уонна Ньургуhун" Margin="0,0,0,20"></TextBlock>
+
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20px" Text="Выбранный сеанс:" Foreground="#1a6ec1"></TextBlock>
+                <TextBlock x:Name="SelectSession" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18px" Text="Среда, 4 ноября, 18:20" Margin="0,0,0,20"></TextBlock>
+
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20px" Text="Зал:" Foreground="#1a6ec1"></TextBlock>
+                <TextBlock x:Name="SelectHall" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18px" Text="Красный" Margin="0,0,0,20"></TextBlock>
+
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20px" Text="Выбарнные места:" Foreground="#1a6ec1"></TextBlock>
+                <TextBlock x:Name="SelectPlaces" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18px" Text="Вы их не выбрали(" Margin="0,0,0,20" TextWrapping="Wrap"></TextBlock>
+
+                <Rectangle Margin="0, 0, 0, 20" Height="1" Fill="#666666"></Rectangle>
+
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20px" Text="Способ оплаты:" Foreground="#1a6ec1"></TextBlock>
+                <CheckBox IsChecked="True" FontSize="14" Content="Банковской картой" Margin="0,0,0,20"></CheckBox>
+                
+                <Rectangle Margin="0, 0, 0, 20" Height="1" Fill="#666666"></Rectangle>
+
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20px" Text="Итого:" Foreground="#1a6ec1"></TextBlock>
+                <TextBlock x:Name="FinalPrice" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18px" Text="0 руб" Margin="0,0,0,20"></TextBlock>
+
+                <Button Content="Купить" Margin="20, 0" Height="35" FontSize="15" Background="#1a6ec1" Foreground="White" Click="BuyTickets"></Button>
+            </StackPanel>
+        </Grid>
+
+        
+        <!--
+        <Button x:Name="ScrXUp" VerticalAlignment="Top" HorizontalAlignment="Right" Height="35" Width="35" FontSize="18px" Margin="0,182,173,0" Click="ScrXUp_Click">sx+</Button>
+        <Button x:Name="ScrXDown" VerticalAlignment="Top" HorizontalAlignment="Right" Height="35" Width="35" FontSize="18px" Margin="0,182,119,0" RenderTransformOrigin="0.529,0.586" Click="ScrXDown_Click">sx-</Button>
+        <Button x:Name="ScrYUp" VerticalAlignment="Top" HorizontalAlignment="Right" Height="36" Width="35" FontSize="18px" Margin="0,236,171,0" Click="ScrYUp_Click">sy+</Button>
+        <Button x:Name="ScrYDown" VerticalAlignment="Top" HorizontalAlignment="Right" Height="35" Width="35" FontSize="18px" Margin="0,236,119,0" Click="ScrYDown_Click">sy-</Button>-->
+
+
+        <!--<StackPanel Margin="25,0,0,25" x:Name="TicketsGrid" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+
+
+        </StackPanel>
+
+
+        <Button x:Name="PriceBtn" VerticalAlignment="Bottom" Margin="0,0,35,25" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent">
+        <Border Width="150" Height="50" Background="Red" CornerRadius="15">
+            <TextBlock FontSize="16px" x:Name="PriceBtnText" Foreground="white" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Далее: "></TextBlock>
+        </Border>
+        </Button>
+        -->
+
+    </Grid>
+</Page>
